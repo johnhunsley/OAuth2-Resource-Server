@@ -18,4 +18,11 @@ public class ResourceController {
         System.out.println(principal);
         return principal;
     }
+
+    @CrossOrigin
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @RequestMapping(value = "/msg", method = RequestMethod.GET)
+    public String getMessage() {
+        return "Only users with the ROLE_USER authority can access this";
+    }
 }
